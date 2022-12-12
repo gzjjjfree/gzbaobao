@@ -1,0 +1,142 @@
+<!DOCTYPE html>  <!--声明为 HTML5 文档-->
+<html lang="zh">  <!--元素是 HTML 页面的根元素-->
+
+<head>  <!--<head> 元素包含了文档的元（meta）数据-->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-19QL43H767"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-19QL43H767');
+</script>
+<meta name="google-site-verification" content="rE6prKq97VW5CttpzwYd6Nx-J5hdl2AZ10COhqBseAw" /> 
+<link rel="stylesheet" type="text/css" href="/CSS/gzhead.css">
+<link rel="stylesheet" type="text/css" href="/CSS/gznav.css">
+<link rel="stylesheet" type="text/css" href="/CSS/gzmain.css">
+<link rel="stylesheet" type="text/css" href="/CSS/gzfoot.css">
+<meta charset="UTF-8">  <!--定义网页编码格式为 utf-8。-->
+<link rel="shortcut icon" href="/images/gzbaotitle.jpg"><!--左侧显示logo等图片。-->
+<title>宝宝之家</title>  <!--<title> 元素描述了文档的标题,顶上可见-->
+ 
+</head>
+<body onload="load()" onresize='setlyheight()'>    
+  <div id="header">    <!--网页上部区域-->     
+      <h1 id="tips"><a href="https://www.gzbaobao.top/">宝宝之家</a></h1>
+      <img src="/images/gz01.jpg" width="130" height="100" id="gzhome" alt="gzhome" draggable="false">
+
+      <div id="dlinput">    <!--登录--> 
+          <form name="dlform" action="https://www.gzbaobao.top/login"  method="get">
+              <label id="dlnlab" for="fname"><b>账号: </b></label><input type="text" id="fname" name="zhanghao" placeholder="电话号码" >
+              <label id="dlplab" for="fpsw"><b>密码: </b></label><input type="password" readonly onfocus="this.removeAttribute('readonly');" id="fpsw" name="psw" placeholder="你的密码" >
+              <a id="dlzc" href="javascript:goserver('register');"><b>注册</b></a>
+              <a id="dlwj" href="javascript:goserver('forget');"><b>忘记密码</b></a>
+              <button type = "button" id = "dlsubmit" name = "登录" onclick = "goserver('login')" ><b>登&nbsp;&nbsp;&nbsp;&nbsp;录</b></button>
+              <select id="dlchoose">
+                  <option value="0" selected>不保存</option>
+                  <option value="86400000">保存一天</option>
+                  <option value="2592000000">保存一个月</option>
+                  <option value="7776000000">保存三个月</option>
+                  <option value="31104000000">保存一年</option>
+              </select>
+          </form>
+      </div> 
+      
+      <div id="showname">
+          <p id="snname"></p><br/><br/>
+          <button id="dlreset" type="button" name="退出登录" onclick="exitlg()"><b id='showdlreset'>退出登录</b></button>
+      </div>
+
+  </div>
+
+  <nav class="topmenu">          <!--导航栏-->
+      <div class="topmenuli"><a id="home" href="https://www.gzbaobao.top" ></a></div>
+      <div class="topmenuli dropdown">    
+          <a href="javascript:void(0)">休闲游戏</a>
+          <div class="dropdown-content" id="gameli">
+              <div id="game21li"><a href="#home" onclick="gogame('game21')">21点</a></div>
+              <div ><a href="javascript:void(0)">斗地主</a></div>
+              <div ><a href="javascript:void(0)">台球</a></div>
+              <div ><a href="#home" onclick="gogame('gamexxl')">消消乐</a></div>
+              <div ><a href="#home" onclick="gogame('gamesudoku')">数独</a></div>
+          </div>
+      </div> 
+      <div class="topmenuli dropdown" id="lxgz">    
+          <a href="#tips">联系我们</a>
+          <div class="dropdown-content">
+              <div class="dcontent" id="fs1" ondrop="drop(event,this.id)" ondragover="allowDrop(event)">
+              <a href="javascript:void(0)" draggable="true" ondragstart="drag(event)" id="gzfsa1" >Email</a></div>
+              <div class="dcontent" id="fs2" ondrop="drop(event,this.id)" ondragover="allowDrop(event)">
+              <a href="javascript:void(0)" draggable="true" ondragstart="drag(event)" id="gzfsa2">Twitter</a></div>
+              <div class="dcontent" id="fs3" ondrop="drop(event,this.id)" ondragover="allowDrop(event)">
+              <a href="javascript:void(0)" draggable="true" ondragstart="drag(event)" id="gzfsa3">FaceBook</a></div>
+          </div>
+      </div>
+      <div class="topmenuli"><a href="javascript:void(0)">关于我们</a></div>
+      <div id="tool"><a href="javascript:goserver('gzfile')">工&nbsp;具</a>
+          <span id="tooltiptext">科学上网</span>
+      </div>    
+  </nav> 
+
+  <main id="buju">  <!--整体布局-->
+      <div id="game">
+          <iframe id="gameif" name="gzgameif"></iframe>
+      </div>
+      <div id="menu">    <!--左侧菜单栏-->        
+          <select id="muli" onchange="slchange(this.value)" name="gzmuli">
+              <option value="xxhtml">HTML学习</option>
+              <option value="xxnginx">NGINX学习</option>              
+              <option value="xxjavascript">JAVA学习</option>
+          </select>
+          <div id="lidiv">
+              <iframe id="liiframe" src="/gziframe/xxhtml.html?t=date.now()" name="liiframe">            
+              </iframe>
+          <canvas id="gzcanvas" width="100" height="100" style="background-color:#CCCC66;clear:both;position:sticky;bottom:20px"></canvas>
+          </div>
+      </div>
+      <div id="nydiv">   <!--右侧内容-->
+          <iframe id="nyiframe" src="/gziframe/gz01.html?t=date.now()" name="nyiframe"></iframe>
+      </div>
+  </main>
+
+  <div id="gzbanquan" style="background-color:#FFA500;clear:both;text-align:center;position:sticky;bottom:0px">
+      <a href="#tips" id='banquan'>版权 © GZBAOBAO</a></div>
+
+  <form id="liuyan" action="https://www.gzbaobao.top" >    <!--留言模块-->
+      <p style="text-align:center;"><b><i>欢迎光临我的小家！有什么想法可以给我留言交流。</i></b></p> 
+      <p id="textlable"><b>留言:</b></p>
+      <botton type="botton" id="lysubmit"  name = "提交" onclick= "goserver('lysave')"><b>提交</b></botton>
+      <textarea id="lytextarea" maxlength="500" placeholder="留言不超过500字...." rows="10" required="required"></textarea>         
+  </form>
+<script>
+    document.getElementById('lytextarea').addEventListener('input', (e) => {
+        document.getElementById('lytextarea').style.height = '138px';
+        document.getElementById('lytextarea').style.height = document.getElementById('lytextarea').scrollHeight + 'px';
+    });
+ </script>
+  <div id="liuyandiv"> <!-- 
+      <div id="lydiv">
+      <p id="lyname">用户留言</p><p id='lytime'>time</p>
+      <textarea id="lytext" maxlength="500" required="required" readonly="readonly"></textarea>
+      </div>-->
+  </div>
+
+  <footer>
+      <img class="gzbottom" style="margin-left:1em;margin-top:0;float:left;" src="/images/gz09.jpg" alt="gz09"  draggable="false" loading="lazy">
+      <img class="gzbottom" style="margin-right:1em;margin-top:0;float:right;" src="/images/gz10.jpg" alt="gz10" draggable="false" loading="lazy">
+      <img class="gzbottom" style="opacity:1;visibility:visible;" src="/images/gz07.jpg" alt="gz06" draggable="false">
+
+      <p style="padding-bottom:1em;text-align:center;"><a href="/2022/gz202209/gz20220925.html" style="font-size:1.1em">第三十四天20220925</a>&ensp;&ensp;&ensp;<a href="/" style="font-size:2.5em">返回</a>&ensp;&ensp;&ensp;<a href="/2022/gz202209/gz20220921.html" style="font-size:1.1em">第三十二天20220921</a></p>
+      <p style="position:relative;left:2em;bottom:3.6em;max-width:4em;"><a href="#tips">回到顶部</a></p><!--回到tips标记的地方-->
+  </footer>
+
+<script src='./Javascrip/gzdebug.js'></script>
+<script src="./Javascrip/gzlib.js"></script>
+<script src="./Javascrip/gzclock.js"></script>
+<script src="./Javascrip/gzjava.js"></script>
+<script src="./Javascrip/gzAjax.js"></script>
+
+</body>
+
+</html>
